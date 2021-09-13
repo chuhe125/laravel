@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::prefix('Pijian') -> group(function(){
+    Route::post('completion','PijianController@completion');//实验答题
+    Route::get('pdf','PijianController@pdf');//实验pdf
+    Route::post('student','PijianController@student');//学生信息
+});
