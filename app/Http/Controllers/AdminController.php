@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function doLogin(Adminrequest $request){
         $a_name=$request->post('a_name');
-        $a_pwd=$request->post('a_pwd');
+        $a_pwd=$request->post('a_password');
 
         $model=new Admin();
         $response=$model->doLogin($a_name,$a_pwd);

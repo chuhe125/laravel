@@ -27,7 +27,7 @@ class Adminrequest extends FormRequest
     {
         return [
             'a_name' =>'required|min:6|max:16',
-            'a_pwd' => 'required|min:6|max:16',
+            'a_password' => 'required|min:6|max:16',
         ];
     }
 

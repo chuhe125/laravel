@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function doLogin(Userrequest $request){
         $u_name=$request->post('u_name');
-        $u_pwd=$request->post('u_pwd');
+        $u_pwd=$request->post('u_password');
 
         $model=new User();
         $response=$model->doLogin($u_name,$u_pwd);

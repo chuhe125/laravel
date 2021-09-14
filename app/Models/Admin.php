@@ -9,7 +9,7 @@ class Admin extends Model
 {
 
     protected $table = "admin";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "id";
     protected $guarded = [];
     //登录
@@ -20,7 +20,7 @@ class Admin extends Model
             $result=$this->where('a_name',$a_name)->exists();//判断email在表中是否存在
             if ($result)
             {
-                $pwd=$this->where('a_name',$a_name)->value('a_pwd');//查询出密码
+                $pwd=$this->where('a_name',$a_name)->value('a_password');//查询出密码
                 if($pwd==$a_pwd){
                     return json_success("登录成功",$result,200);
                 }else{
@@ -43,7 +43,7 @@ class Admin extends Model
             //录入数据
             $data=self::create(
                 [   'a_name'=>$request['a_name'],
-                    'a_pwd'=>$request['a_pwd'],
+                    'a_password'=>$request['a_password'],
                 ]
             );
             //返回值

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = "user";
-    public $timestamps = false;
+    public $timestamps =  true;
     protected $primaryKey = "id";
     protected $guarded = [];
     //登录
@@ -18,7 +18,7 @@ class User extends Model
             $result=$this->where('u_name',$u_name)->exists();//判断email在表中是否存在
             if ($result)
             {
-                $pwd=$this->where('u_name',$u_name)->value('u_pwd');//查询出密码
+                $pwd=$this->where('u_name',$u_name)->value('u_password');//查询出密码
                 if($pwd==$u_pwd){
                     return json_success("登录成功",$result,200);
                 }else{
@@ -41,7 +41,7 @@ class User extends Model
             //录入数据
             $data=self::create(
                 [   'u_name'=>$request['u_name'],
-                    'u_pwd'=>$request['u_pwd'],
+                    'u_password'=>$request['u_password'],
                 ]
             );
             //返回值
