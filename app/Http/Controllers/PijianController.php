@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Pijianrequest;
+use App\Http\Requests\Studentrequest;
 use App\Models\Pijian;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Mpdf;
 class PijianController extends Controller
 {
-    public static function student(Request $request)
+    public static function student(StudentRequest $request)
 
     {
         $student_name = $request['student_name'];
@@ -31,7 +33,7 @@ class PijianController extends Controller
     /***
      * 自主式电桥 -Completion5
      */
-    public function completion(Request  $request){
+    public function completion(PijianRequest  $request){
         $student_id = $request['student_id'];
         $ds1=$request['ds1'];
         $ds2=$request['ds2'];
@@ -116,18 +118,8 @@ class PijianController extends Controller
                    {
                         $grade += 10;
                    }
-                    if($pd1=='0')
-                   {
-                        $grade += 10;
-                   }
-                    if($pd2=='1')
-                   {
-                        $grade += 10;
-                   }
-                    if($pd3=='0')
-                   {
-                       $grade += 10;
-                   }*/
+              */
+
         $grade = $grade + $grade_xp;
 
         $res2 = Student::grade($student_id, $grade,$grade_xp);
@@ -173,6 +165,21 @@ class PijianController extends Controller
         $student_teacher = $student_b[0]->student_teacher;
         $grade = $student_b[0]->grade;
         $grade_xp = $student_b[0]->grade_xp;
+
+        if($pd1=='0'){
+            $pd1='错';}
+        else{
+            $pd1='对';}
+
+        if($pd2=='0'){
+            $pd2='错';}
+        else{
+            $pd2='对';}
+
+        if($pd3=='0'){
+            $pd3='错';}
+        else{
+            $pd3='对';}
 
 
 

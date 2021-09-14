@@ -157,9 +157,9 @@
     <div style="color: red;">(每空4分，一共四十分，数据要求小数点后面三位小数，其中L1为
         xi+60与xi差的绝对,L2为xi+80与xi+20的差得绝对值,L3为xi+100与xi+40差得绝对值，m⁄∆l 的公式如表格所示。)
     </div>
-    <p>计算劈尖中细丝的直径d=<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>(mm) <img
+    <p>计算劈尖中细丝的直径d=<u>&nbsp;&nbsp;&nbsp;&nbsp;{{$d}}&nbsp;</u>(mm) <img
             src="https://gitee.com/cml_1_0/img/raw/master/20210913143154.png" style="margin-left: 97px;
-                margin-bottom: -15px;">{{$d}}</p>
+                margin-bottom: -15px;"></p>
     <p style="color: red;">（每空10分，一共十分，数据要求小数点后面三位小数，公式如后面括号所示。）</p>
     <p>思考题(<span style="color: red;">每题10分，一共二十分</span>)</p>
     <p>1. 两束光在空间相遇产生干涉的条件是：</p>
