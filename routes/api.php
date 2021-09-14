@@ -21,3 +21,7 @@ Route::prefix('Pijian') -> group(function(){
     Route::get('pdf','PijianController@pdf');//实验pdf
     Route::post('student','PijianController@student');//学生信息
 });
+Route::prefix('admin')->group(function () {
+    Route::post('login', 'AdminController@dologin'); //登录
+    Route::post('register', 'AdminController@register'); //注册
+});
