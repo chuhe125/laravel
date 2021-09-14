@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function doLogin(Adminrequest $request){
-        $email=$request->post('u_name');
-        $password=$request->post('u_pwd');
+        $a_name=$request->post('a_name');
+        $a_pwd=$request->post('a_pwd');
 
         $model=new Admin();
-        $response=$model->doLogin($email,$password);
+        $response=$model->doLogin($a_name,$a_pwd);
         return $response ;
 
     }

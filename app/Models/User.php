@@ -2,26 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class User extends Model
 {
-
-    protected $table = "admin";
+    protected $table = "user";
     public $timestamps = false;
     protected $primaryKey = "id";
     protected $guarded = [];
     //登录
 
-    public  function doLogin($a_name,$a_pwd){
+    public  function doLogin($u_name,$u_pwd){
 
         try {
-            $result=$this->where('a_name',$a_name)->exists();//判断email在表中是否存在
+            $result=$this->where('u_name',$u_name)->exists();//判断email在表中是否存在
             if ($result)
             {
-                $pwd=$this->where('a_name',$a_name)->value('a_pwd');//查询出密码
-                if($pwd==$a_pwd){
+                $pwd=$this->where('u_name',$u_name)->value('u_pwd');//查询出密码
+                if($pwd==$u_pwd){
                     return json_success("登录成功",$result,200);
                 }else{
                     return json_fail("密码错误",null,100);
@@ -42,8 +40,8 @@ class Admin extends Model
         try {
             //录入数据
             $data=self::create(
-                [   'a_name'=>$request['a_name'],
-                    'a_pwd'=>$request['a_pwd'],
+                [   'u_name'=>$request['u_name'],
+                    'u_pwd'=>$request['u_pwd'],
                 ]
             );
             //返回值

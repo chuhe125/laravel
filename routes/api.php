@@ -22,6 +22,8 @@ Route::prefix('Pijian') -> group(function(){
     Route::post('student','PijianController@student');//学生信息
 });
 Route::prefix('admin')->group(function () {
-    Route::post('login', 'AdminController@dologin'); //登录
-    Route::post('register', 'AdminController@register'); //注册
+    Route::post('login', 'AdminController@dologin'); //admin登录
+    Route::post('register', 'AdminController@register'); //admin注册
+    Route::post('login1', 'UserController@dologin'); //user登录
+    Route::post('register1', 'UserController@register'); //user注册
 });
