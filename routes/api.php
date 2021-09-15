@@ -22,7 +22,7 @@ Route::prefix('pijian') -> group(function(){
      */
     Route::post('completion','PijianController@completion');//实验答题
     Route::get('pdf','PijianController@pdf');//实验pdf
-    Route::post('student','PijianController@student');//学生信息
+    Route::post('student','PijianController@student');//学生信息存入
 });
 
 Route::prefix('admin')->group(function () {
@@ -30,6 +30,7 @@ Route::prefix('admin')->group(function () {
     Route::post('register', 'AdminController@register'); //admin注册
     Route::get('login1', 'UserController@dologin'); //user登录
     Route::post('register1', 'UserController@register'); //user注册
+    Route::get('export','AdminController@export');//查询学生信息
 });
 
 Route::prefix('shiyan1')->group(function (){
@@ -38,4 +39,6 @@ Route::prefix('shiyan1')->group(function (){
      */
     Route::post('shiyan1','Shiyan1Controller@shiyan1');//箱式直流电桥测量电阻实验答题
     Route::get('pdf1','Shiyan1Controller@pdf1');//箱式直流电桥测量电阻实验pdf
+    Route::post('student','Shiyan1Controller@student');//学生信息存入
+
 });

@@ -96,8 +96,6 @@ class Student extends Model
                     'shiyan2.pd1',
                     'shiyan2.pd2',
                     'shiyan2.pd3'
-
-
                 )->get();
 
             return $res ?
@@ -108,6 +106,20 @@ class Student extends Model
             return false;
         }
 
+    }
+    public static function toexport()
+    {
+        try {
+            $res = Student::
+            select('id','student_name','experiment_name','grade'
+                )->get();
+            return $res ?
+                $res :
+                false;
+        } catch (\Exception $e) {
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
 
     }
 

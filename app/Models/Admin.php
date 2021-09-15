@@ -53,7 +53,6 @@ class Admin extends Model
             logError('注册失败',[$e->getMessage()]);
             return false;
         }
-
-
     }
+
 }

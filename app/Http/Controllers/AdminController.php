@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Adminrequest;
 use App\Models\Admin;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,12 @@ class AdminController extends Controller
         return $res?   //判断
             json_success("注册成功",$res,200):
             json_fail("注册失败",null,100);
-
+    }
+    public  function  export(){
+        $res=Student::toexport();
+        return $res?   //判断
+            json_success("注册成功",$res,200):
+            json_fail("注册失败",null,100);
     }
 
 }

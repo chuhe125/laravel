@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PdfRequest;
 use App\Http\Requests\Shiyan1Request;
+use App\Http\Requests\Studentrequest;
 use App\Models\Shiyan1;
 use App\Models\Student;
 use Mpdf;
@@ -11,6 +12,26 @@ use Mpdf;
 class Shiyan1Controller extends Controller
 {
     //
+    public static function student(StudentRequest $request)
+
+    {
+        $student_name = $request['student_name'];
+        $student_level = $request['student_level'];
+        $student_spec = $request['student_spec'];
+        $student_year = $request['student_year'];
+        $student_class = $request['student_class'];
+        $student_num = $request['student_num'];
+        $experiment_name = $request['experiment_name'];
+        $course_name = $request['course_name'];
+        $student_date = $request['student_date'];
+        $student_teacher = $request['student_teacher'];
+
+        $res = Student::establish($student_name,$student_level, $student_spec,$student_year, $student_num, $student_class, $experiment_name,$course_name,$student_date,$student_teacher);
+
+        return $res ?
+            json_success('操作成功!', $res, 200) :
+            json_fail('操作失败!', null, 100);
+    }
     public function shiyan1(Shiyan1Request $request)
     {
         $student_id = $request['student_id'];
