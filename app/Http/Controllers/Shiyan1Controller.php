@@ -12,9 +12,14 @@ use Mpdf;
 class Shiyan1Controller extends Controller
 {
     //
+     /***
+         *   箱式直流电桥测量电阻-yjx
+         * 存入学生信息并返回id
+         */
     public static function student(StudentRequest $request)
 
     {
+       
         $student_name = $request['student_name'];
         $student_level = $request['student_level'];
         $student_spec = $request['student_spec'];
@@ -32,6 +37,10 @@ class Shiyan1Controller extends Controller
             json_success('操作成功!', $res, 200) :
             json_fail('操作失败!', null, 100);
     }
+    /***
+     *   箱式直流电桥测量电阻 
+     * 存入实验信息
+     */
     public function shiyan1(Shiyan1Request $request)
     {
         $student_id = $request['student_id'];
@@ -234,6 +243,7 @@ class Shiyan1Controller extends Controller
         if ($pd2 == 0) {
             $grade_xp += 6;
         }
+
         $grade = $grade + $grade_xp;
 
         $res2 = Student::grade($student_id, $grade, $grade_xp);
@@ -247,6 +257,10 @@ class Shiyan1Controller extends Controller
             json_fail('操作失败!', null, 100);
     }
 
+    /***
+     * 导出pdf
+     *   箱式直流电桥测量电阻
+     */
     public function pdf1(PdfRequest $request)
     {
         $student_id = $request['student_id'];
@@ -271,7 +285,7 @@ class Shiyan1Controller extends Controller
         $b7= $student_b[0]->b7;
         $b8= $student_b[0]->b8;
         $b9= $student_b[0]->b9;
-        $b10= $student_b[0]->b10;
+        $b10=$student_b[0]->b10;
         $c1= $student_b[0]->c1;
         $c2= $student_b[0]->c2;
         $c3= $student_b[0]->c3;
