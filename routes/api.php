@@ -26,10 +26,16 @@ Route::prefix('pijian') -> group(function(){
 });
 
 Route::prefix('admin')->group(function () {
+    /***
+     *@Author:wzh
+     */
     Route::get('login', 'AdminController@dologin'); //admin登录
     Route::post('register', 'AdminController@register'); //admin注册
     Route::get('login1', 'UserController@dologin'); //user登录
-    Route::post('register1', 'UserController@register'); //user注册
+    Route::post('register1', 'UserController@register'); //user注册  --未使用
+    /***
+     *@Author:yjx
+     */
     Route::get('export','AdminController@export');//查询学生信息
 });
 

@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    /***
+     * Auther:wzh
+     * 判断管理员登录
+     */
     public function doLogin(Adminrequest $request){
         $a_name=$request->post('a_name');
         $a_pwd=$request->post('a_password');
@@ -20,12 +24,20 @@ class AdminController extends Controller
         return $response ;
 
     }
+    /***
+     * Auther:wzh
+     * 判断管理员注册
+     */
     public  function  register(Adminrequest $request){
         $res=Admin::register($request);
         return $res?   //判断
             json_success("注册成功",$res,200):
             json_fail("注册失败",null,100);
     }
+    /***
+     * Auther:yjx
+     * 导出student表的信息
+     */
     public  function  export(){
         $res=Student::toexport();
         return $res?   //判断

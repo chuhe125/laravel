@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Mpdf;
 class PijianController extends Controller
 {
+    /***
+     * Auther:wzh
+     * 存入学生信息
+     */
     public static function student(StudentRequest $request)
 
     {
@@ -128,6 +132,10 @@ class PijianController extends Controller
             json_success('操作成功',null, 200) :
             json_fail('操作失败',null,100);
     }
+    /***
+     * Auther:wzh
+     * 输出pdf
+     */
     public function pdf(Request $request)
     {
 

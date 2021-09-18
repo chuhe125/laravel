@@ -13,13 +13,14 @@ class Shiyan1Controller extends Controller
 {
     //
      /***
-         *   箱式直流电桥测量电阻-yjx
+       * Auther:yjx
+         * 箱式直流电桥测量电阻
          * 存入学生信息并返回id
          */
     public static function student(StudentRequest $request)
 
     {
-       
+
         $student_name = $request['student_name'];
         $student_level = $request['student_level'];
         $student_spec = $request['student_spec'];
@@ -37,9 +38,10 @@ class Shiyan1Controller extends Controller
             json_success('操作成功!', $res, 200) :
             json_fail('操作失败!', null, 100);
     }
+
     /***
-     *   箱式直流电桥测量电阻 
-     * 存入实验信息
+     *   Auther:yjx
+     *  箱式直流电桥测量电阻 存入实验信息
      */
     public function shiyan1(Shiyan1Request $request)
     {
@@ -258,8 +260,8 @@ class Shiyan1Controller extends Controller
     }
 
     /***
-     * 导出pdf
-     *   箱式直流电桥测量电阻
+     * Auther:yjx
+     * 导出-箱式直流电桥测量电阻-pdf
      */
     public function pdf1(PdfRequest $request)
     {

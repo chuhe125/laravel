@@ -9,6 +9,10 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+/***
+ * 未使用
+ *
+ */
 class UserController extends Controller
 {
     public function doLogin(Userrequest $request){
