@@ -24,6 +24,7 @@ class AdminController extends Controller
         return $response ;
 
     }
+
     /***
      * Auther:wzh
      * 判断管理员注册
@@ -40,9 +41,10 @@ class AdminController extends Controller
      */
     public  function  export(){
         $res=Student::toexport();
+
         return $res?   //判断
-            json_success("注册成功",$res,200):
-            json_fail("注册失败",null,100);
+            json_success("查询成功",$res,200):
+            json_fail("查询失败",null,100);
     }
 
 }
