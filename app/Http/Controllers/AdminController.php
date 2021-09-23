@@ -16,6 +16,7 @@ class AdminController extends Controller
      * 判断管理员登录
      */
     public function doLogin(Adminrequest $request){
+
         $a_name=$request->post('a_name');
         $a_pwd=$request->post('a_password');
 

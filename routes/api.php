@@ -52,8 +52,8 @@ Route::prefix('oumu')->group(function (){
      * @Author: yjx
      */
     Route::post('oumu','OumuController@oumu');//欧姆表改装设计实验答题
-    Route::get('pdf','OumuController@pdf');//欧姆表改装设计实验pdf
+    Route::get('pdf','OumuController@pdf')->middleware('checkLogin');//欧姆表改装设计实验pdf
     Route::post('student','OumuController@student');//学生信息存入
-    Route::post('examine','OumuController@examine');//图片判分
+    Route::post('examine','OumuController@examine')->middleware('checkLogin');//图片判分
 //    Route::get('status','OumuController@status');//是否完成判分
 });
