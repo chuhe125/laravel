@@ -35,10 +35,10 @@ Route::prefix('admin')->group(function () {
     Route::post('register1', 'UserController@register'); //user注册  --未使用
     /***
      *@Author:yjx
+     * 老师登陆后
      */
     Route::get('export','AdminController@export');//查询学生信息
 });
-
 Route::prefix('shiyan1')->group(function (){
     /**
      * @Author: yjx
@@ -46,7 +46,16 @@ Route::prefix('shiyan1')->group(function (){
     Route::post('shiyan1','Shiyan1Controller@shiyan1');//箱式直流电桥测量电阻实验答题
     Route::get('pdf1','Shiyan1Controller@pdf1');//箱式直流电桥测量电阻实验pdf
     Route::post('student','Shiyan1Controller@student');//学生信息存入
-
+});
+Route::prefix('oumu')->group(function (){
+    /**
+     * @Author: yjx
+     */
+    Route::post('oumu','OumuController@oumu');//欧姆表改装设计实验答题
+    Route::get('pdf','OumuController@pdf')->middleware('checkLogin');//欧姆表改装设计实验pdf
+    Route::post('student','OumuController@student');//学生信息存入
+    Route::post('examine','OumuController@examine')->middleware('checkLogin');//图片判分
+//    Route::get('status','OumuController@status');//是否完成判分
 });
 Route::prefix('huoer') -> group(function(){
     /***
