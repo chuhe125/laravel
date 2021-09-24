@@ -15,6 +15,12 @@ class Student extends Model
     {
 
         try {
+            $ru=Student::where('student_num','=',$student_num)->count();
+
+            if($ru>=2){
+                return false;
+            }else{
+
             Student::create(
                 [
                     'student_name' => $student_name,
@@ -36,7 +42,8 @@ class Student extends Model
             return $res ?
                 $res :
                 false;
-        } catch (\Exception $e) {
+           }
+        }catch (\Exception $e) {
             logError('搜索错误', [$e->getMessage()]);
             return false;
         }
@@ -111,7 +118,8 @@ class Student extends Model
     {
         try {
             $res = Student::
-            select('id','student_name','experiment_name','grade'
+            select('id','student_name','student_level','student_year','student_class',
+                'student_num','experiment_name','grade','student_teacher'
                 )->get();
             return $res ?
                 $res :

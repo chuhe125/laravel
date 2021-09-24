@@ -35,36 +35,43 @@ class Oumu extends Model
         $pd3
     )
     {
-    try{
-        $res = self::create(
-             [
-                'student_id' =>  $student_id,
-                'a1'=>$a1,
-                'a2'=>$a2,
-                'a3'=>$a3,
-                'b1'=>$b1,
-                'b2'=>$b2,
-                'b3'=>$b3,
-                'b4'=>$b4,
-                'b5'=>$b5,
-                'b6'=>$b6,
-                'b7'=>$b7,
-                'b8'=>$b8,
-                'b9'=>$b9,
-                'b10'=>$b10,
-                'b11'=>$b11,
-                'b12'=>$b12,
-                'b13'=>$b13,
-                'b14'=>$b14,
-                'pd1'=>$pd1,
-                'pd2'=>$pd2,
-                'pd3'=>$pd3
-                ]
-            );
-            return $res ?
-                $res :
-                false;
-        } catch (\Exception $e) {
+
+        try {
+            $ru = self::where('student_id', $student_id)->count();
+
+            if ($ru!=0) {
+                return false;
+            } else {
+                $res = self::create(
+                    [
+                        'student_id' => $student_id,
+                        'a1' => $a1,
+                        'a2' => $a2,
+                        'a3' => $a3,
+                        'b1' => $b1,
+                        'b2' => $b2,
+                        'b3' => $b3,
+                        'b4' => $b4,
+                        'b5' => $b5,
+                        'b6' => $b6,
+                        'b7' => $b7,
+                        'b8' => $b8,
+                        'b9' => $b9,
+                        'b10' => $b10,
+                        'b11' => $b11,
+                        'b12' => $b12,
+                        'b13' => $b13,
+                        'b14' => $b14,
+                        'pd1' => $pd1,
+                        'pd2' => $pd2,
+                        'pd3' => $pd3
+                    ]
+                );
+                return $res ?
+                    $res :
+                    false;
+            }
+        }catch (\Exception $e) {
             logError('搜索错误', [$e->getMessage()]);
             return false;
         }

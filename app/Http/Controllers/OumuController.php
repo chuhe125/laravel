@@ -23,6 +23,7 @@ class OumuController extends Controller
         $res = Student::establish($request['student_name'],$request['student_level'],$request['student_spec'],$request['student_year'],
                                   $request['student_class'],$request['student_num'] ,$request['experiment_name'] ,
                                   $request['course_name'],$request['student_date'],$request['student_teacher']);
+
         return $res ?
             json_success('操作成功!', $res, 200) :
             json_fail('操作失败!', null, 100);
