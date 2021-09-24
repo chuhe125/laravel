@@ -57,3 +57,12 @@ Route::prefix('oumu')->group(function (){
     Route::post('examine','OumuController@examine')->middleware('checkLogin');//图片判分
 //    Route::get('status','OumuController@status');//是否完成判分
 });
+Route::prefix('huoer') -> group(function(){
+    /***
+     * @Author:wzh
+     */
+    Route::post('completion1','HuoerController@completion1');//实验答题
+    Route::get('pdf2','HuoerController@pdf2');//实验pdf
+    Route::post('huoerphoto','HuoerController@huoerphoto');//实验6图片分存入
+    Route::post('huoerout','HuoerController@huoerout');//拿答题数据对象
+});

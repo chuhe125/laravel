@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Adminrequest;
 use App\Models\Admin;
 use App\Models\Student;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -15,14 +16,21 @@ class AdminController extends Controller
      * Auther:wzh
      * 判断管理员登录
      */
+
+    public function doLogin(Adminrequest $request)
+    {
+        $a_name = $request->post('a_name');
+        $a_pwd = $request->post('a_password');
+
     public function doLogin(Adminrequest $request){
 
         $a_name=$request->post('a_name');
         $a_pwd=$request->post('a_password');
 
-        $model=new Admin();
-        $response=$model->doLogin($a_name,$a_pwd);
-        return $response ;
+
+        $model = new Admin();
+        $response = $model->doLogin($a_name, $a_pwd);
+        return $response;
 
     }
 
@@ -30,22 +38,33 @@ class AdminController extends Controller
      * Auther:wzh
      * 判断管理员注册
      */
-    public  function  register(Adminrequest $request){
-        $res=Admin::register($request);
-        return $res?   //判断
-            json_success("注册成功",$res,200):
-            json_fail("注册失败",null,100);
+    public function register(Adminrequest $request)
+    {
+        $res = Admin::register($request);
+        return $res ?   //判断
+            json_success("注册成功", $res, 200) :
+            json_fail("注册失败", null, 100);
     }
+
     /***
      * Auther:yjx
      * 导出student表的信息
      */
+
+    public function export()
+    {
+        $res = Student::toexport();
+        return $res ?   //判断
+            json_success("注册成功", $res, 200) :
+            json_fail("注册失败", null, 100);
+
     public  function  export(){
         $res=Student::toexport();
 
         return $res?   //判断
             json_success("查询成功",$res,200):
             json_fail("查询失败",null,100);
+
     }
 
 }
