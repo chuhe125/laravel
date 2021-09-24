@@ -48,3 +48,12 @@ Route::prefix('shiyan1')->group(function (){
     Route::post('student','Shiyan1Controller@student');//学生信息存入
 
 });
+Route::prefix('huoer') -> group(function(){
+    /***
+     * @Author:wzh
+     */
+    Route::post('completion1','HuoerController@completion1');//实验答题
+    Route::get('pdf2','HuoerController@pdf2');//实验pdf
+    Route::post('huoerphoto','HuoerController@huoerphoto');//实验6图片分存入
+    Route::post('huoerout','HuoerController@huoerout');//拿答题数据对象
+});
