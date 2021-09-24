@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Huoerrequest;
 use App\Models\Huoer;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class HuoerController extends Controller
     /***
      * 霍尔 -Completion1
      */
-    public function completion1(Request $request){
+    public function completion1(HuoerRequest $request){
 
         $student_id = $request['student_id'];
         $a1=$request['a1'];
@@ -115,7 +116,7 @@ class HuoerController extends Controller
         $r1=$request['r1'];
         $sk1=$request['sk1'];
         $sk2=$request['sk2'];
-        $grade_xp = $request['grade_xp'];//选择判断题分
+
 
 
         $res1 = Huoer::establish(
@@ -225,6 +226,7 @@ class HuoerController extends Controller
 
 
         $grade = 0;
+        $grade_xp=0;
 
        if ($a1!=null)
        {
@@ -626,14 +628,12 @@ class HuoerController extends Controller
             $grade_xp += 5;
         }
 
-
-
         $grade = $grade + $grade_xp;
 
         $res2 = Student::grade($student_id, $grade,$grade_xp);
 
-        return $res1 ?
-            json_success('操作成功',null, 200) :
+        return $res2 ?
+            json_success('操作成功',$res2, 200) :
             json_fail('操作失败',null,100);
     }
 
@@ -895,9 +895,8 @@ class HuoerController extends Controller
     public function huoerphoto(Request $request)
     {
         $student_id = $request['student_id'];
-        $r1 = $request['r1'];
-      //  $fraction_p2 = $request['fraction_p2'];
-        $res=Huoer::establishphoto($student_id,$r1);
+        $r1score = $request['r1score'];
+        $res=Huoer::establishphoto($student_id,$r1score);
         return $res ?
             json_success('操作成功!', null, 200) :
             json_fail('操作失败!', null, 100);

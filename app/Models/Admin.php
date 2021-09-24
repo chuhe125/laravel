@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Admin extends Model
 {
@@ -16,16 +15,13 @@ class Admin extends Model
     //登录
 
     public  function doLogin($a_name,$a_pwd){
+
         try {
-            session_start();
             $result=$this->where('a_name',$a_name)->exists();//判断email在表中是否存在
             if ($result)
             {
                 $pwd=$this->where('a_name',$a_name)->value('a_password');//查询出密码
-
                 if($pwd==$a_pwd){
-                    $_SESSION['a_name']=$a_name->a_name;
-                    $_SESSION['a_pwd']=$a_pwd->a_password;
                     return json_success("登录成功",$result,200);
                 }else{
                     return json_fail("密码错误",null,100);

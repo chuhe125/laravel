@@ -11,15 +11,15 @@ class Huoer extends Model
     protected $primaryKey = "id";
     protected $guarded = [];
 
-    public static function establishphoto($student_id,$r1)
+    public static function establishphoto($student_id,$r1score)
     {
         try {
             //把数据存入数据库
             $res = Huoer::where('student_id',$student_id)
-                ->update(['r1'=>$r1]);
+                ->update(['r1score'=>$r1score]);
 
             //取出原来的总分
-            $score = Student::where('id',$student_id)->value('grade')+$r1;
+            $score = Student::where('id',$student_id)->value('grade')+$r1score;
             //修改总分
             $res2 = Student::where('id',$student_id)
                 ->update(['grade'=>$score]);
