@@ -37,7 +37,7 @@ Route::prefix('admin')->group(function () {
      *@Author:yjx
      * 老师登陆后
      */
-    Route::get('export','AdminController@export');//查询学生信息
+    Route::get('export','AdminController@export');//查询所有 学生信息
 });
 Route::prefix('shiyan1')->group(function (){
     /**
@@ -52,9 +52,12 @@ Route::prefix('oumu')->group(function (){
      * @Author: yjx
      */
     Route::post('oumu','OumuController@oumu');//欧姆表改装设计实验答题
-    Route::get('pdf','OumuController@pdf')->middleware('checkLogin');//欧姆表改装设计实验pdf
+    Route::get('pdf','OumuController@pdf');//欧姆表改装设计实验pdf
     Route::post('student','OumuController@student');//学生信息存入
-    Route::post('examine','OumuController@examine')->middleware('checkLogin');//图片判分
+    Route::post('examine','OumuController@examine');//图片判分
+    Route::get('query','OumuController@query');//按照实验名称查询
+    Route::get('change','PhotoController@change');//图片
+
 //    Route::get('status','OumuController@status');//是否完成判分
 });
 Route::prefix('huoer') -> group(function(){

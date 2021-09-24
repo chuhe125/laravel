@@ -262,7 +262,18 @@ class Student extends Model
 
     }
 
-
+     public static  function toquery($na){
+         try {
+             $res = Student::
+             select()->where('experiment_name','=',$na)->get();
+             return $res ?
+                 $res :
+                 false;
+         } catch (\Exception $e) {
+             logError('搜索错误', [$e->getMessage()]);
+             return false;
+         }
+     }
 
 //    public static  function ex_status($id){
 //        try {

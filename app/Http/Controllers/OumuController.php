@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OumuRequest;
+use App\Http\Requests\PdfRequest;
 use App\Http\Requests\Studentrequest;
 use App\Models\Oumu;
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Mpdf;
 class OumuController extends Controller
 {
     //
@@ -49,8 +50,8 @@ class OumuController extends Controller
         $b10=$request['b10'];
         $b11=$request['b11'];
         $b12=$request['b12'];
-//        $b13=$request['b13'];
-//        $b14=$request['b14'];
+        $b13=$request['b13'];
+        $b14=$request['b14'];
         $pd1=$request['pd1'];
         $pd2=$request['pd2'];
         $pd3=$request['pd3'];
@@ -277,5 +278,18 @@ class OumuController extends Controller
 //            json_success("已判分",null,200):
 //            json_fail("未判分",null,100);
 //    }
+    /***
+     *Auther:yjx
+     * 实验查询
+     */
+    public static function query(Request $request)
+    {
+        $na=$request['experiment_name'];
+
+        $res=Student::toquery($na);
+        return $res?   //判断
+            json_success("查询成功",$res,200):
+            json_fail("查询失败",null,100);
+    }
 
 }

@@ -17,16 +17,11 @@ class AdminController extends Controller
      * 判断管理员登录
      */
 
-    public function doLogin(Adminrequest $request)
-    {
-        $a_name = $request->post('a_name');
-        $a_pwd = $request->post('a_password');
 
     public function doLogin(Adminrequest $request){
 
         $a_name=$request->post('a_name');
         $a_pwd=$request->post('a_password');
-
 
         $model = new Admin();
         $response = $model->doLogin($a_name, $a_pwd);
@@ -51,12 +46,6 @@ class AdminController extends Controller
      * 导出student表的信息
      */
 
-    public function export()
-    {
-        $res = Student::toexport();
-        return $res ?   //判断
-            json_success("注册成功", $res, 200) :
-            json_fail("注册失败", null, 100);
 
     public  function  export(){
         $res=Student::toexport();
