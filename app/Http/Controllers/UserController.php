@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 /***
  * 未使用
- *用户注册
+ *
  */
 class UserController extends Controller
 {

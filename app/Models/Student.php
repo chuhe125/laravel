@@ -11,7 +11,7 @@ class Student extends Model
     protected $primaryKey = "id";
     protected $guarded = [];
 
-    public static function establish($student_name,$student_level, $student_spec,$student_year, $student_class,$student_num,  $experiment_name,$course_name,$student_date,$student_teacher)
+    public static function establish($student_name,$student_level, $student_spec,$student_year, $student_num, $student_class, $experiment_name,$course_name,$student_date,$student_teacher)
     {
 
         try {
@@ -107,17 +107,11 @@ class Student extends Model
         }
 
     }
-
-    /***
-     * Auther:yjx
-     * 导出数据
-     */
     public static function toexport()
     {
         try {
             $res = Student::
-            select('id','student_name','student_level','student_year',
-                'student_class','student_num','experiment_name','grade','student_teacher'
+            select('id','student_name','experiment_name','grade'
                 )->get();
             return $res ?
                 $res :
@@ -261,21 +255,6 @@ class Student extends Model
         }
 
     }
-
-
-
-//    public static  function ex_status($id){
-//        try {
-//            $res = Student::
-//            select('status')->where('id','=',$id)->get();
-//            return $res ?
-//                $res :
-//                false;
-//        } catch (\Exception $e) {
-//            logError('搜索错误', [$e->getMessage()]);
-//            return false;
-//        }
-//    }
 
 
 }
