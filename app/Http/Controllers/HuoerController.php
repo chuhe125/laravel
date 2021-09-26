@@ -898,11 +898,19 @@ class HuoerController extends Controller
         $r1score = $request['r1score'];
         $res=Huoer::establishphoto($student_id,$r1score);
         return $res ?
-            json_success('操作成功!', null, 200) :
+            json_success('操作成功!', $res, 200) :
             json_fail('操作失败!', null, 100);
     }
 
+    public static function export_photo(Request $request)
+    {
+        $id=$request['student_id'];
 
+        $res=Huoer::toexport_photo($id);
+        return $res?   //判断
+            json_success("导出图片成功",$res,200):
+            json_fail("导出图片失败",null,100);
+    }
     public function huoerout(Request $request)
     {
         $student_id = $request['student_id'];

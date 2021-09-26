@@ -129,6 +129,25 @@ class Oumu extends Model
         }
     }
     /***
+     * 导出图片
+     */
+    public static function toexport_photo($id)
+    {
+        try {
+            $res['res1'] =self::where('student_id',$id)->select('b13')->get();
+            $res['res2']=self::where('student_id',$id)->select('b14')->get();
+//            $res['res1'] = $res1;
+//            $res['res2'] = $res2;
+            return ($res['res1']&&$res['res2']) ?
+                $res:
+                false;
+        } catch (\Exception $e) {
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+    /***
      * Auther:yjx
      * 图片判分
      */
@@ -143,9 +162,12 @@ class Oumu extends Model
 
             $res3 = Student::where('id',$id)
                 ->update(['grade'=>$res2]);
+            dd($res3);
            $res4=Student::where('id','=',$id)->update(['status'=>1]);
-            return ($res&&$res3) ?
-                $res :
+           $res5=Student::where('id','=',$id)->select('status')->get();
+
+           return ($res&&$res3) ?
+                $res5 :
                 false;
         } catch (\Exception $e) {
             logError('搜索错误', [$e->getMessage()]);

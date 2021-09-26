@@ -119,7 +119,7 @@ class Student extends Model
         try {
             $res = Student::
             select('id','student_name','student_level','student_year','student_class',
-                'student_num','experiment_name','grade','student_teacher'
+                'student_num','experiment_name','grade','student_teacher','status'
                 )->get();
             return $res ?
                 $res :
@@ -268,10 +268,19 @@ class Student extends Model
      public static  function toquery($na){
          try {
              $res = Student::
-             select()->where('experiment_name','=',$na)->get();
-             return $res ?
-                 $res :
-                 false;
+             select()->where('experiment_name','=',$na)->exists();
+              if ($res){
+                  $res = Student::
+                  select()->where('experiment_name','=',$na)->get();
+                  return $res ?
+                      $res :
+                      false;
+              }else {
+                  return $res ?
+                      $res :
+                      false;
+              }
+
          } catch (\Exception $e) {
              logError('搜索错误', [$e->getMessage()]);
              return false;

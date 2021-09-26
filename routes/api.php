@@ -59,6 +59,7 @@ Route::prefix('oumu')->group(function (){
     Route::post('student','OumuController@student');//学生信息存入
     Route::post('examine','OumuController@examine');//图片判分
     Route::get('query','OumuController@query');//按照实验名称查询
+    Route::get('photo','OumuController@export_photo');//导出实验图片
 
 //    Route::get('status','OumuController@status');//是否完成判分
 
@@ -71,5 +72,6 @@ Route::prefix('huoer') -> group(function(){
     Route::get('pdf2','HuoerController@pdf2');//实验pdf
     Route::post('huoerphoto','HuoerController@huoerphoto');//实验图片分存入
     Route::post('huoerout','HuoerController@huoerout');//拿答题数据对象
+    Route::get('photo','HuoerController@export_photo');//导出实验图片
 });
 

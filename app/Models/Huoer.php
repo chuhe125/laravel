@@ -11,6 +11,25 @@ class Huoer extends Model
     protected $primaryKey = "id";
     protected $guarded = [];
 
+    /***
+     * 导出图片
+     */
+    public static function toexport_photo($id)
+    {
+        try {
+            $res =self::where('student_id',$id)->select('r1')->get();
+
+
+//            $res['res1'] = $res1;
+//            $res['res2'] = $res2;
+            return $res ?
+                $res:
+                false;
+        } catch (\Exception $e) {
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
     public static function establishphoto($student_id,$r1score)
     {
         try {
@@ -23,8 +42,9 @@ class Huoer extends Model
             //修改总分
             $res2 = Student::where('id',$student_id)
                 ->update(['grade'=>$score]);
+            $res5=Student::where('id','=',$student_id)->select('status')->get();
             return $res ?
-                $res :
+                $res5 :
                 false;
         } catch (\Exception $e) {
             logError('搜索错误', [$e->getMessage()]);

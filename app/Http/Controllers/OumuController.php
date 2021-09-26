@@ -258,6 +258,20 @@ class OumuController extends Controller
 
         exit;
     }
+
+    /***
+     * Auther:yjx
+     * 导出欧姆的实验图
+     */
+    public static function export_photo(Request $request)
+    {
+        $id=$request['student_id'];
+
+        $res=Oumu::toexport_photo($id);
+        return $res?   //判断
+            json_success("导出图片成功",$res,200):
+            json_fail("导出图片失败",null,100);
+    }
     /***
      * Auther:yjx
      * 审批图片
@@ -269,7 +283,7 @@ class OumuController extends Controller
         $b=$request['gread_2'];
         $res=Oumu::toexamine($id,$a,$b);
         return $res?   //判断
-            json_success("判分成功",null,200):
+            json_success("判分成功",$res,200):
             json_fail("判分失败",null,100);
     }
 //    public  static  function status(Request  $request){
@@ -290,7 +304,7 @@ class OumuController extends Controller
         $res=Student::toquery($na);
         return $res?   //判断
             json_success("查询成功",$res,200):
-            json_fail("查询失败",null,100);
+            json_fail("无此实验", null, 100);
     }
 
 }
