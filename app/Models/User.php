@@ -35,7 +35,6 @@ class User extends Model
         }
 
     }
-
     public static function register($request){
         try {
             //录入数据
@@ -51,7 +50,5 @@ class User extends Model
             logError('注册失败',[$e->getMessage()]);
             return false;
         }
-
-
     }
 }

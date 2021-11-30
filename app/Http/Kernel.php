@@ -64,6 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         //后台登录保护中间件
        /* 'admin.login' => \App\Http\Middleware\AdminLogin::class,*/
+        'refresh.token' => \App\Http\Middleware\RefreshToken::class,
+
     ];
 
     /**
