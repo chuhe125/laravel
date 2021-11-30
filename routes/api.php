@@ -21,17 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('refresh.token')->prefix('admin')->group(function () {
-    /***
-     *@Author:wzh
-     */
-    Route::get('login', 'AdminController@dologin'); //admin登录
-    Route::post('register', 'AdminController@register'); //admin注册
-    Route::get('login1', 'UserController@dologin'); //user登录
-    Route::post('register1', 'UserController@register'); //user注册  --未使用
-
-});
-
-Route::middleware('refresh.token')->prefix('admin')->group(function () {
     Route::get('a', 'UsersController@a'); //admin登录
 });
 
